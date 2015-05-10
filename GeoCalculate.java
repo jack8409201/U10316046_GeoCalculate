@@ -110,7 +110,55 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		rectanglePanel.add(p9,BorderLayout.EAST);
 		add(rectanglePanel,BorderLayout.SOUTH);
 		rectanglePanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+		
+		jbtCalculate1.addActionListener(this);
+		jbtClean1.addActionListener(this);
+		jbtCalculate2.addActionListener(this);
+		jbtClean2.addActionListener(this);
+		jbtCalculate3.addActionListener(this);
+		jbtClean3.addActionListener(this);
+	}
 	
+	@Override //Implement actionPerformed
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == jbtCalculate1){
+			double Radius = Double.parseDouble(jtfRadius.getText());
+			Circle circle = new Circle(Radius);
+			
+			jtaArea1.setText(String.format("%.8f", circle.getArea()));
+			jtaPerimeter1.setText(String.format("%.8f", circle.getPerimeter()));
+		}
+		else if(e.getSource() == jbtClean1){
+			jtfRadius.setText("");
+			jtaArea1.setText("");
+			jtaPerimeter1.setText("");
+		}
+		else if(e.getSource() == jbtCalculate2){
+			double Side = Double.parseDouble(jtfSide.getText());
+			Square square = new Square(Side);
+			
+			jtaArea2.setText(String.format("%.8f", square.getArea()));
+			jtaPerimeter2.setText(String.format("%.8f", square.getPerimeter()));
+		}
+		else if(e.getSource() == jbtClean2){
+			jtfSide.setText("");
+			jtaArea2.setText("");
+			jtaPerimeter2.setText("");
+		}
+		else if(e.getSource() == jbtCalculate3){
+			double length = Double.parseDouble(jtfLength.getText());
+			double width = Double.parseDouble(jtfWidth.getText());
+			Rectangle rectangle = new Rectangle(length,width);
+			
+			jtaArea3.setText(String.format("%.8f", rectangle.getArea()));
+			jtaPerimeter3.setText(String.format("%.8f", rectangle.getPerimeter()));
+		}
+		else if(e.getSource() == jbtClean3){
+			jtfLength.setText("");
+			jtfWidth.setText("");
+			jtaArea3.setText("");
+			jtaPerimeter3.setText("");
+		}
 	}
 	
 	public static void main(String[] args) {
