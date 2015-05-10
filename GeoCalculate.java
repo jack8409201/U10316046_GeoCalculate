@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class GeoCalculate extends JFrame implements ActionListener{
+	
+	//Declare global variables 
 	private JPanel circlePanel = new JPanel();
 	private JPanel squarePanel = new JPanel();
 	private JPanel rectanglePanel = new JPanel();
@@ -35,11 +37,14 @@ public class GeoCalculate extends JFrame implements ActionListener{
 	private JButton jbtClean2 = new JButton("Clean");
 	private JButton jbtClean3 = new JButton("Clean");
 	
+	//Constructor 
 	public GeoCalculate(){
+		//Circle panel
 		setLayout(new BorderLayout(10,10));
 		circlePanel.setLayout(new BorderLayout(10,10));
 		p1.setLayout(new FlowLayout(FlowLayout.LEFT));
 		p1.add(jlbCircle);
+		//The font and size of the Circle label 
 		jlbCircle.setFont(new Font("TimesRoman",Font.BOLD,15));
 		circlePanel.add(p1,BorderLayout.NORTH);
 		p2.setLayout(new GridLayout(3,2,5,5));
@@ -47,6 +52,7 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		p2.add(jtfRadius);
 		p2.add(new JLabel("The area is : "));
 		p2.add(jtaArea1);
+		//JTextArea can not edit
 		jtaArea1.setEditable(false);
 		jtaArea1.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
 		p2.add(new JLabel("The perimeter is : "));
@@ -61,9 +67,11 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		add(circlePanel,BorderLayout.NORTH);
 		circlePanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 	
+		//Square panel
 		squarePanel.setLayout(new BorderLayout(10,10));
 		p4.setLayout(new FlowLayout(FlowLayout.LEFT));
 		p4.add(jlbSquare);
+		//The font and size of the Square label 
 		jlbSquare.setFont(new Font("TimesRoman",Font.BOLD,15));
 		squarePanel.add(p4,BorderLayout.NORTH);
 		p5.setLayout(new GridLayout(3,2,5,5));
@@ -71,6 +79,7 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		p5.add(jtfSide);
 		p5.add(new JLabel("The area is : "));
 		p5.add(jtaArea2);
+		//JTextArea can not edit
 		jtaArea2.setEditable(false);
 		jtaArea2.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
 		p5.add(new JLabel("The perimeter is : "));
@@ -85,9 +94,11 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		add(squarePanel,BorderLayout.CENTER);
 		squarePanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
 		
+		//Rectangle panel
 		rectanglePanel.setLayout(new BorderLayout(10,10));
 		p7.setLayout(new FlowLayout(FlowLayout.LEFT));
 		p7.add(jlbRectangle);
+		//The font and size of the Rectangle label 
 		jlbRectangle.setFont(new Font("TimesRoman",Font.BOLD,15));
 		rectanglePanel.add(p7,BorderLayout.NORTH);
 		p8.setLayout(new GridLayout(4,2,5,5));
@@ -97,6 +108,7 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		p8.add(jtfWidth);
 		p8.add(new JLabel("The area is : "));
 		p8.add(jtaArea3);
+		//JTextArea can not edit
 		jtaArea3.setEditable(false);
 		jtaArea3.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
 		p8.add(new JLabel("The perimeter is : "));
@@ -121,6 +133,7 @@ public class GeoCalculate extends JFrame implements ActionListener{
 	
 	@Override //Implement actionPerformed
 	public void actionPerformed(ActionEvent e) {
+		//Calculate circle area and perimeter
 		if(e.getSource() == jbtCalculate1){
 			double Radius = Double.parseDouble(jtfRadius.getText());
 			Circle circle = new Circle(Radius);
@@ -128,11 +141,13 @@ public class GeoCalculate extends JFrame implements ActionListener{
 			jtaArea1.setText(String.format("%.8f", circle.getArea()));
 			jtaPerimeter1.setText(String.format("%.8f", circle.getPerimeter()));
 		}
+		//Clean circle
 		else if(e.getSource() == jbtClean1){
 			jtfRadius.setText("");
 			jtaArea1.setText("");
 			jtaPerimeter1.setText("");
 		}
+		//Calculate square area and perimeter
 		else if(e.getSource() == jbtCalculate2){
 			double Side = Double.parseDouble(jtfSide.getText());
 			Square square = new Square(Side);
@@ -140,11 +155,13 @@ public class GeoCalculate extends JFrame implements ActionListener{
 			jtaArea2.setText(String.format("%.8f", square.getArea()));
 			jtaPerimeter2.setText(String.format("%.8f", square.getPerimeter()));
 		}
+		//Clean square
 		else if(e.getSource() == jbtClean2){
 			jtfSide.setText("");
 			jtaArea2.setText("");
 			jtaPerimeter2.setText("");
 		}
+		//Calculate rectangle area and perimeter
 		else if(e.getSource() == jbtCalculate3){
 			double length = Double.parseDouble(jtfLength.getText());
 			double width = Double.parseDouble(jtfWidth.getText());
@@ -153,6 +170,7 @@ public class GeoCalculate extends JFrame implements ActionListener{
 			jtaArea3.setText(String.format("%.8f", rectangle.getArea()));
 			jtaPerimeter3.setText(String.format("%.8f", rectangle.getPerimeter()));
 		}
+		//Clean rectangle
 		else if(e.getSource() == jbtClean3){
 			jtfLength.setText("");
 			jtfWidth.setText("");
@@ -161,6 +179,7 @@ public class GeoCalculate extends JFrame implements ActionListener{
 		}
 	}
 	
+	//Main method
 	public static void main(String[] args) {
 		JFrame frame = new GeoCalculate();
 		frame.setTitle("U10316046_GeoCalculate");
