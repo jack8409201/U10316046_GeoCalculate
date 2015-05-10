@@ -133,51 +133,59 @@ public class GeoCalculate extends JFrame implements ActionListener{
 	
 	@Override //Implement actionPerformed
 	public void actionPerformed(ActionEvent e) {
-		//Calculate circle area and perimeter
-		if(e.getSource() == jbtCalculate1){
-			double Radius = Double.parseDouble(jtfRadius.getText());
-			Circle circle = new Circle(Radius);
+		try{
+		
+			//Calculate circle area and perimeter
+			if(e.getSource() == jbtCalculate1){
+				double Radius = Double.parseDouble(jtfRadius.getText());
+				Circle circle = new Circle(Radius);
 			
-			jtaArea1.setText(String.format("%.8f", circle.getArea()));
-			jtaPerimeter1.setText(String.format("%.8f", circle.getPerimeter()));
-		}
-		//Clean circle
-		else if(e.getSource() == jbtClean1){
-			jtfRadius.setText("");
-			jtaArea1.setText("");
-			jtaPerimeter1.setText("");
-		}
-		//Calculate square area and perimeter
-		else if(e.getSource() == jbtCalculate2){
-			double Side = Double.parseDouble(jtfSide.getText());
-			Square square = new Square(Side);
+				jtaArea1.setText(String.format("%.8f", circle.getArea()));
+				jtaPerimeter1.setText(String.format("%.8f", circle.getPerimeter()));
+			}
+			//Clean circle
+			else if(e.getSource() == jbtClean1){
+				jtfRadius.setText("");
+				jtaArea1.setText("");
+				jtaPerimeter1.setText("");
+			}
+			//Calculate square area and perimeter
+			else if(e.getSource() == jbtCalculate2){
+				double Side = Double.parseDouble(jtfSide.getText());
+				Square square = new Square(Side);
 			
-			jtaArea2.setText(String.format("%.8f", square.getArea()));
-			jtaPerimeter2.setText(String.format("%.8f", square.getPerimeter()));
-		}
-		//Clean square
-		else if(e.getSource() == jbtClean2){
-			jtfSide.setText("");
-			jtaArea2.setText("");
-			jtaPerimeter2.setText("");
-		}
-		//Calculate rectangle area and perimeter
-		else if(e.getSource() == jbtCalculate3){
-			double length = Double.parseDouble(jtfLength.getText());
-			double width = Double.parseDouble(jtfWidth.getText());
-			Rectangle rectangle = new Rectangle(length,width);
+				jtaArea2.setText(String.format("%.8f", square.getArea()));
+				jtaPerimeter2.setText(String.format("%.8f", square.getPerimeter()));
+			}
+			//Clean square
+			else if(e.getSource() == jbtClean2){
+				jtfSide.setText("");
+				jtaArea2.setText("");
+				jtaPerimeter2.setText("");
+			}
+			//Calculate rectangle area and perimeter
+			else if(e.getSource() == jbtCalculate3){
+				double length = Double.parseDouble(jtfLength.getText());
+				double width = Double.parseDouble(jtfWidth.getText());
+				Rectangle rectangle = new Rectangle(length,width);
 			
-			jtaArea3.setText(String.format("%.8f", rectangle.getArea()));
-			jtaPerimeter3.setText(String.format("%.8f", rectangle.getPerimeter()));
+				jtaArea3.setText(String.format("%.8f", rectangle.getArea()));
+				jtaPerimeter3.setText(String.format("%.8f", rectangle.getPerimeter()));
+			}
+			//Clean rectangle
+			else if(e.getSource() == jbtClean3){
+				jtfLength.setText("");
+				jtfWidth.setText("");
+				jtaArea3.setText("");
+				jtaPerimeter3.setText("");
+			}
 		}
-		//Clean rectangle
-		else if(e.getSource() == jbtClean3){
-			jtfLength.setText("");
-			jtfWidth.setText("");
-			jtaArea3.setText("");
-			jtaPerimeter3.setText("");
+		catch(RuntimeException q){
+			JOptionPane.showMessageDialog(null,"輸入數字啦~白癡!!","WARNING",JOptionPane.WARNING_MESSAGE);
 		}
 	}
+	
+	
 	
 	//Main method
 	public static void main(String[] args) {
