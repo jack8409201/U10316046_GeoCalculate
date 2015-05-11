@@ -181,11 +181,9 @@ public class GeoCalculate extends JFrame implements ActionListener{
 			}
 		}
 		catch(RuntimeException q){
-			JOptionPane.showMessageDialog(null,"輸入數字啦~白癡!!","WARNING",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null,"格式錯囉~白癡!!","WARNING",JOptionPane.WARNING_MESSAGE);
 		}
 	}
-	
-	
 	
 	//Main method
 	public static void main(String[] args) {
